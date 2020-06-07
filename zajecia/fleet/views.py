@@ -1,14 +1,14 @@
 from django.views import View
 from .models import Car, PETROL_CHOISES
 from django.shortcuts import render, redirect
-from .forms import SimpleCarForm
+from .forms import SimpleCarForm, ModelCarForm
 
 
 class FleetView(View):
 
     def get(self, request, *args, **kwargs):
         cars = Car.objects.all()
-        form = SimpleCarForm()
+        form = ModelCarForm()
         return render(request, "fleet/lista.html", {
             "elements": cars,
             "petrol_choises": PETROL_CHOISES,
@@ -16,7 +16,7 @@ class FleetView(View):
         })
 
     def post(self, request, *args, **kwargs):
-        form = SimpleCarForm(request.POST)
+        form = ModelCarForm(request.POST)
         if form.is_valid():
             car = Car(
                 brand=form.cleaned_data['brand'],

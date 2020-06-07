@@ -48,7 +48,12 @@
     </table>
     <form method="post">
         {% csrf_token %}
-        {{ form }}
+        {% for field in form %}
+            <div class="from-group">
+                <label for="{{ field.id_for_label }}">{{ field.label_tag }}: </label>
+                {{ field }}
+            </div>
+        {% endfor %}
         <input type="submit" value="Zapisz">
     </form>
 
