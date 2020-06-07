@@ -5,7 +5,7 @@
 {% block title %} Lista pojazdów {% endblock %}
 
 {% block content %}
-    <table>
+    <table id="tabela">
         <thead>
             <tr>
                 <th>
@@ -48,5 +48,11 @@
     </table>
     {% include "core/form_horizontal.html" with form=formularz %}
     {% include "core/form_template.html" with form=formularz %}
+
+    <script>
+        $(document).ready( function () {
+    $('#tabela').DataTable();
+} );
+    </script>
 
 {% endblock %}
