@@ -24,5 +24,4 @@ class Car(models.Model):
 
 
 class Truck(models.Model):
-    car = models.ForeignKey(Car, on_delete=models.CASCADE)
     load = models.IntegerField()
