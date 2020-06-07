@@ -29,6 +29,10 @@ class Car(models.Model):
     def calculate_fuel_consumption(self):
         return self.petrol * self.year
 
+    class Meta:
+        verbose_name = "Pojazd"
+        verbose_name_plural = "Pojazdy"
+
 
 class Truck(models.Model):
     load = models.IntegerField()
