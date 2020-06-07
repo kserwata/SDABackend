@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import FleetView
+from .views import form_view
 
 
 urlpatterns = [
-    path('', FleetView.as_view(), name="fleet_list")
+    path('', form_view, name="fleet_list")
 ]

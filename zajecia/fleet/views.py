@@ -4,20 +4,20 @@ from django.shortcuts import render, redirect
 from .forms import SimpleCarForm, ModelCarForm
 
 
-class FleetView(View):
+def form_view(request):
 
-    def get(self, request, *args, **kwargs):
-        cars = Car.objects.all()
-        form = ModelCarForm(instance=cars.first())
-        return render(request, "fleet/lista.html", {
-            "elements": cars,
-            "petrol_choises": PETROL_CHOISES,
-            "formularz": form
-        })
+    form = ModelCarForm()
 
-    def post(self, request, *args, **kwargs):
+    if request.method == "POST":
         form = ModelCarForm(request.POST)
+
         if form.is_valid():
             form.save()
-        return redirect("fleet_list")
+
+    cars = Car.objects.all()
+
+    return render(request, "fleet/lista.html", {
+        "elements": cars,
+        "formularz": form
+    })
 
