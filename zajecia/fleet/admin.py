@@ -15,6 +15,13 @@ class CarAdmin(admin.ModelAdmin):
     ordering = ['-year']
     actions = [change_petrol]
 
+    def get_queryset(self, request):
+        qs = self.model.default_manager.get_queryset()
+        ordering = self.ordering or ()
+        if ordering:
+            qs = qs.order_by(*ordering)
+        return qs
+
 
 class TruckAdmin(admin.ModelAdmin):
     pass
