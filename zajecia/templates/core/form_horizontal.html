@@ -2,6 +2,7 @@
     {% csrf_token %}
     {% for field in form %}
         <div class="from-group" style="display: inline-block">
+            {{ field.errors }}
             <label class="label" for="{{ field.id_for_label }}">{{ field.label_tag }} </label>
             {{ field }}
         </div>
