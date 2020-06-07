@@ -1,0 +1,10 @@
+<form method="post" style="background: lime;">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="from-group">
+            <label class="label" for="{{ field.id_for_label }}">{{ field.label_tag }} </label>
+            {{ field }}
+        </div>
+    {% endfor %}
+    <input type="submit" value="Zapisz">
+</form>

@@ -46,15 +46,7 @@
             {% endfor %}
         </tbody>
     </table>
-    <form method="post">
-        {% csrf_token %}
-        {% for field in form %}
-            <div class="from-group">
-                <label for="{{ field.id_for_label }}">{{ field.label_tag }}: </label>
-                {{ field }}
-            </div>
-        {% endfor %}
-        <input type="submit" value="Zapisz">
-    </form>
+    {% include "core/form_horizontal.html" with form=formularz %}
+    {% include "core/form_template.html" with form=formularz %}
 
 {% endblock %}

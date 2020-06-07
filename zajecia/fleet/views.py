@@ -12,7 +12,7 @@ class FleetView(View):
         return render(request, "fleet/lista.html", {
             "elements": cars,
             "petrol_choises": PETROL_CHOISES,
-            "form": form
+            "formularz": form
         })
 
     def post(self, request, *args, **kwargs):
