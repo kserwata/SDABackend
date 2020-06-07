@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <title>{% block title %}Szablon{% endblock %}</title>
+</head>
+<body>
+    <div class="menu">
+        {% include "core/menu.html" %}
+    </div>
+    <div class="content">
+        {% block content %}Tutaj powinien znaleźć się content{% endblock %}
+    </div>
+</body>
+</html>

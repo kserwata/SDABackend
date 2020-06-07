@@ -1,0 +1,24 @@
+html, body {
+    background: #f0f0f0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Arial";
+}
+
+table {
+    border: 1px solid #cecece;
+    background: #ffffff;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.menu {
+    display: inline-block;
+    width: 20%;
+}
+
+.content {
+    display: inline-block;
+    width: 70%;
+}

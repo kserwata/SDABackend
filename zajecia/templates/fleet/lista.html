@@ -1,0 +1,62 @@
+{% extends "core/template.html" %}
+{% load fleet_tags %}
+{% load static %}
+
+{% block title %} Lista pojazdów {% endblock %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Brand
+                </th>
+                <th>
+                    Model
+                </th>
+                <th>
+                    Paliwo
+                </th>
+                <th>
+                    Rok produkcji
+                </th>
+                <th>
+                    Ilość drzwi
+                </th>
+                <th>
+                    Odnośnik
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for element in elements %}
+                <tr>
+                    <td>{{element.brand}}</td>
+                    <td>{{element.model}}</td>
+                    <td>{{element.petrol | petrol_name}}</td>
+                    <td>{{element.year | brand_new_car}}</td>
+                    <td>
+                        {% mult element.year element.doors as result %}
+                        {{ result }}
+                    </td>
+                    <td>
+                        <a href="">Pokaż</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form action="" method="POST">
+        {% csrf_token %}
+        Brand: <input type="text" name="brand" value="{{car.brand}}"/><br/>
+        Model: <input type="text" name="model"/><br/>
+        Rok: <input type="number" name="year"/><br/>
+        Doors: <input type="number" name="doors"/><br/>
+        Petrol: <select name="petrol">
+            {% for petrol in petrol_choises %}
+                <option value="{{ petrol.0 }}">{{ petrol.1 }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="zapisz">
+    </form>
+{% endblock %}
