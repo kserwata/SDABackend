@@ -1,6 +1,7 @@
 from django.db import models
 from .validators import first_brand_letter_uppercase
 from django.core.exceptions import ValidationError
+from core.DeletableModel import DeletableModel
 
 PETROL_CHOISES = (
     (1, 'LPG'),
@@ -10,7 +11,7 @@ PETROL_CHOISES = (
 )
 
 
-class Car(models.Model):
+class Car(DeletableModel):
 
     brand = models.CharField(max_length=12, default="Brand", validators=[first_brand_letter_uppercase])
     petrol = models.IntegerField(choices=PETROL_CHOISES, default=1)

@@ -11,7 +11,7 @@ change_petrol.short_description = "Zmien rodzaj paliwa"
 
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
-    list_display = ['brand', 'model', 'petrol', 'year', 'doors']
+    list_display = ['brand', 'model', 'petrol', 'year', 'doors', 'is_deleted']
     ordering = ['-year']
     actions = [change_petrol]
 
