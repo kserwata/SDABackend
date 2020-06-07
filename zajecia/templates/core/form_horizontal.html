@@ -1,11 +1,7 @@
-<form method="post" style="background: lime;">
+{% load crispy_forms_tags %}
+
+<form method="post">
     {% csrf_token %}
-    {% for field in form %}
-        <div class="from-group" style="display: inline-block">
-            {{ field.errors }}
-            <label class="label" for="{{ field.id_for_label }}">{{ field.label_tag }} </label>
-            {{ field }}
-        </div>
-    {% endfor %}
-    <input type="submit" value="Zapisz">
+    {{ form | crispy }}
+    <button type="submit" class="btn btn-primary">Zapisz</button>
 </form>
