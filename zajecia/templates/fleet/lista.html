@@ -46,17 +46,10 @@
             {% endfor %}
         </tbody>
     </table>
-    <form action="" method="POST">
+    <form method="post">
         {% csrf_token %}
-        Brand: <input type="text" name="brand" value="{{car.brand}}"/><br/>
-        Model: <input type="text" name="model"/><br/>
-        Rok: <input type="number" name="year"/><br/>
-        Doors: <input type="number" name="doors"/><br/>
-        Petrol: <select name="petrol">
-            {% for petrol in petrol_choises %}
-                <option value="{{ petrol.0 }}">{{ petrol.1 }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="zapisz">
+        {{ form }}
+        <input type="submit" value="Zapisz">
     </form>
+
 {% endblock %}
