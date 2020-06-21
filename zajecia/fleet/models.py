@@ -33,6 +33,9 @@ class Car(DeletableModel):
     class Meta:
         verbose_name = "Pojazd"
         verbose_name_plural = "Pojazdy"
+        permissions = [
+            ('rent_car', 'Access to renting car')
+        ]
 
 
 class Truck(models.Model):

@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
 from .forms import SimpleUserForm, SimpleLoginForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import permission_required
 
 
-@permission_required('fleet.add_car', login_url="/authentication/login")
 def register_view(request):
 
     user_form = SimpleUserForm()
@@ -19,6 +18,8 @@ def register_view(request):
                 user_form.cleaned_data['password']
             )
             user.save()
+            group = Group.objects.get(name="Uzytkownicy")
+            user.groups.add(group)
             user_form = SimpleUserForm()
 
     return render(request, "authentication/register.html", {
