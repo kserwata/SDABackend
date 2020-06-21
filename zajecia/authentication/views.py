@@ -53,3 +53,23 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect(login_view)
+
+
+def users(request):
+    if not request.user.is_superuser:
+        return redirect(logout_view)
+
+    users = User.objects.all()
+
+    return render(request, "authentication/users.html", {
+        "users": users
+    })
+
+
+def login_as(request, pk):
+    if not request.user.is_superuser:
+        return redirect(logout_view)
+
+    user = User.objects.get(pk=pk)
+    login(request, user)
+    return redirect("/fleet")

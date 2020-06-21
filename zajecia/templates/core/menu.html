@@ -12,6 +12,11 @@
         <li>
             <a href="{% url 'auth_logout_view' %}">Wyloguj</a>
         </li>
+        {% if request.user.is_superuser %}
+            <li>
+                <a href="{% url 'auth_users_view' %}">Uzytkownicy</a>
+            </li>
+        {% endif %}
     {% else %}
         <li>
             <a href="{% url 'auth_login_view' %}">Login</a>

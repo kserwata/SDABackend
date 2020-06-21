@@ -1,0 +1,21 @@
+{% extends "core/template.html" %}
+{% load static %}
+
+{% block title %} Uzytkownicy {% endblock %}
+
+{% block content %}
+    <table>
+        <tr>
+            <th>Login</th>
+            <th>Akcja</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>
+                    <a href="{% url 'auth_users_login_as_view' user.pk %}">Zaloguj</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
