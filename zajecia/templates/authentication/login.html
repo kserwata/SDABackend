@@ -1,0 +1,18 @@
+{% extends "core/template.html" %}
+{% load static %}
+
+{% block title %} Logowanie {% endblock %}
+
+{% block content %}
+    {% include "core/form_template.html" with form=login_form %}
+    <button class="btn btn-danger" onclick="togglePassword()">Pokaz haslo</button>
+    <script>
+        function togglePassword(){
+            if($("#id_password").attr("type") === "password"){
+               $("#id_password").attr("type", "text");
+            } else {
+                $("#id_password").attr("type", "password");
+            }
+        }
+    </script>
+{% endblock %}

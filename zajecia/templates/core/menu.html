@@ -5,9 +5,21 @@
     <li>
         <a href="{% url 'fleet_list' %}">Lista pojazdów</a>
     </li>
-    <li>
-        <a href="{% url 'auth_register_view' %}">Rejestracja</a>
-    </li>
+    {% if request.user.is_authenticated %}
+        <li>
+            Witaj {{ request.user.username }}!
+        </li>
+        <li>
+            <a href="{% url 'auth_logout_view' %}">Wyloguj</a>
+        </li>
+    {% else %}
+        <li>
+            <a href="{% url 'auth_login_view' %}">Login</a>
+        </li>
+        <li>
+            <a href="{% url 'auth_register_view' %}">Rejestracja</a>
+        </li>
+    {% endif %}
     <li>
         <a href="">Kontakt</a>
     </li>
