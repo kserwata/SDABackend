@@ -1,0 +1,8 @@
+{% extends "core/template.html" %}
+{% load static %}
+
+{% block title %} Rejestracja {% endblock %}
+
+{% block content %}
+    {% include "core/form_template.html" with form=user_form %}
+{% endblock %}
