@@ -51,7 +51,16 @@ def login_view(request):
 
 
 def logout_view(request):
+
+    last_user = request.session.get("current_user")
+
     logout(request)
+
+    if last_user:
+        user = User.objects.get(pk=last_user)
+        login(request, user)
+        return redirect(users)
+
     return redirect(login_view)
 
 
@@ -71,5 +80,10 @@ def login_as(request, pk):
         return redirect(logout_view)
 
     user = User.objects.get(pk=pk)
+
+    current_user = request.user
+
     login(request, user)
+
+    request.session['current_user'] = current_user.pk
     return redirect("/fleet")
