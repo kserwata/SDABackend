@@ -2,9 +2,11 @@ from django.views import View
 from .models import Car, PETROL_CHOISES
 from django.shortcuts import render, redirect
 from .forms import SimpleCarForm, ModelCarForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class WidokFormularza(View):
+class WidokFormularza(LoginRequiredMixin, View):
+    login_url = "/authentication/login"
 
     def get(self, request):
         form = ModelCarForm()

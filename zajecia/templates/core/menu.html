@@ -7,7 +7,7 @@
     </li>
     {% if request.user.is_authenticated %}
         <li>
-            Witaj {{ request.user.username }}!
+            Witaj {{ request.user.username }} ({{ request.user.employee.location }})!
         </li>
         <li>
             <a href="{% url 'auth_logout_view' %}">Wyloguj</a>
