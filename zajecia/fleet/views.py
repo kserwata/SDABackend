@@ -5,8 +5,7 @@ from .forms import SimpleCarForm, ModelCarForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class WidokFormularza(LoginRequiredMixin, View):
-    login_url = "/authentication/login"
+class WidokFormularza(View):
 
     def get(self, request):
         form = ModelCarForm()

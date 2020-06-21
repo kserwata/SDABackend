@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'authentication.LoginRequiredMiddleware.LoginRequiredMiddleware'
 ]
 
 ROOT_URLCONF = 'zajecia.urls'
@@ -128,3 +129,9 @@ STATICFILES_DIRS = [
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_URL = "/authentication/login"
+
+LOGIN_EXEMPT_URLS = (
+    r'^register/$',
+)

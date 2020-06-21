@@ -1,8 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .forms import SimpleUserForm, SimpleLoginForm
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import permission_required
+
+
+def index_page(request):
+    return HttpResponse("index")
 
 
 def register_view(request):
@@ -37,7 +41,9 @@ def login_view(request):
             user = authenticate(username=login_form.cleaned_data['login'], password=login_form.cleaned_data['password'])
             if not user is None:
                 login(request, user)
-                return redirect("/fleet")
+                if request.GET.get("next"):
+                    return redirect(request.GET['next'])
+                return redirect("/")
 
     return render(request, "authentication/login.html", {
         "login_form": login_form
