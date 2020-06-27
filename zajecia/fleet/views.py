@@ -1,8 +1,9 @@
 from django.views import View
-from .models import Car, PETROL_CHOISES
-from django.shortcuts import render, redirect
+from django.shortcuts import render, HttpResponse
 from .forms import SimpleCarForm, ModelCarForm
+from .service import FleetService
 from django.contrib.auth.mixins import LoginRequiredMixin
+import json
 
 
 class WidokFormularza(View):
@@ -19,8 +20,18 @@ class WidokFormularza(View):
         return self.render_view(request, form)
 
     def render_view(self, request, form):
-        cars = Car.objects.all()
+        fleet_service = FleetService(request)
+        cars = fleet_service.get_all_cars()
         return render(request, "fleet/lista.html", {
             "elements": cars,
             "formularz": form
         })
+
+
+class ApiView(View):
+
+    def get(self, request):
+        fleet_service = FleetService(request)
+        cars = fleet_service.get_all_cars()
+        json_data = [{"brand": car.brand, "year": car.year, "id": car.pk} for car in cars]
+        return HttpResponse(json.dumps(json_data))
