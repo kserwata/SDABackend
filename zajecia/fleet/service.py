@@ -7,5 +7,5 @@ class FleetService:
         self.__request = request
 
     def get_all_cars(self):
-        cars = Car.objects.filter(year__gt=2010)
+        cars = Car.objects.all()
         return cars
