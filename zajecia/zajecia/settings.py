@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'login_required.middleware.LoginRequiredMiddleware'
+    # 'login_required.middleware.LoginRequiredMiddleware'
 ]
 
 ROOT_URLCONF = 'zajecia.urls'
@@ -135,5 +135,10 @@ LOGIN_URL = "/authentication/login"
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 4
+    'PAGE_SIZE': 4,
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter'
+    )
 }
