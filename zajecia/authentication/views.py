@@ -3,6 +3,9 @@ from .forms import SimpleUserForm, SimpleLoginForm
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import permission_required
+import jwt
+import datetime
+import json
 
 
 def index_page(request):
@@ -36,14 +39,26 @@ def login_view(request):
     login_form = SimpleLoginForm()
 
     if request.method == "POST":
-        login_form = SimpleLoginForm(request.POST)
-        if login_form.is_valid():
-            user = authenticate(username=login_form.cleaned_data['login'], password=login_form.cleaned_data['password'])
-            if not user is None:
-                login(request, user)
-                if request.GET.get("next"):
-                    return redirect(request.GET['next'])
-                return redirect("/")
+        if request.META['CONTENT_TYPE'] == "application/json":
+            data = json.loads(request.body)
+            username = data['login']
+            password = data['password']
+            user = User.objects.get(username=username)
+            if user.check_password(password):
+                payload = {
+                    "username": username,
+                    "expire": datetime.datetime.now().timestamp() + 3600
+                }
+                return HttpResponse(jwt.encode(payload, "test123"))
+        else:
+            login_form = SimpleLoginForm(request.POST)
+            if login_form.is_valid():
+                user = authenticate(username=login_form.cleaned_data['login'], password=login_form.cleaned_data['password'])
+                if not user is None:
+                    login(request, user)
+                    if request.GET.get("next"):
+                        return redirect(request.GET['next'])
+                    return redirect("/")
 
     return render(request, "authentication/login.html", {
         "login_form": login_form
