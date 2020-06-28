@@ -1,5 +1,7 @@
+{% load i18n %}
 {% extends "core/template.html" %}
 
 {% block content %}
     <h1>Pojazd {{id_pojazdu}}</h1>
+    {% trans 'FLEET.petrol' %}
 {% endblock %}

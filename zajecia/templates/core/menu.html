@@ -32,7 +32,7 @@
     </li>
     {% for language in request.LANGUAGES %}
         <li>
-            <a href="/{{ language.0 }}">{{ language.1 }}</a>
+            <a href="{% url 'language_changes' %}?lang={{ language.0 }}">{{ language.1 }}</a>
         </li>
     {% endfor %}
 </ul>

@@ -32,7 +32,7 @@
         <tbody>
             {% for element in elements %}
                 <tr>
-                    <td>{{element.brand}}</td>
+                    <td>{% trans element.brand %}</td>
                     <td>{{element.model}}</td>
                     <td>{{element.petrol | petrol_name}}</td>
                     <td>{{element.year | brand_new_car}}</td>

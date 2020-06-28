@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
 from .forms import SimpleUserForm, SimpleLoginForm
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate, login, logout
@@ -7,6 +7,7 @@ import jwt
 import datetime
 import json
 from django.utils.translation import activate
+from django.conf import settings
 
 
 def index_page(request):
@@ -16,7 +17,9 @@ def index_page(request):
 def language_changes(request):
     language = request.GET['lang']
     activate(language)
-    return redirect(index_page)
+    response = HttpResponseRedirect("/")
+    response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
+    return response
 
 
 def register_view(request):

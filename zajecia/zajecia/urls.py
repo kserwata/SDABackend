@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
-from authentication.views import index_page
+from authentication.views import index_page, language_changes
 from .api import router
 from django.views.i18n import JavaScriptCatalog
 from django.utils import timezone
@@ -28,12 +28,10 @@ urlpatterns = [
     path('jsi18n/',
          last_modified(lambda req, **kw: last_modified_date)(JavaScriptCatalog.as_view()),
          name='javascript-catalog'),
-]
-
-urlpatterns += i18n_patterns(
     path('', index_page, name="auth_index_view"),
+    path('lang_choose', language_changes, name='language_changes'),
     path('admin/', admin.site.urls),
     path('fleet/', include('fleet.urls')),
     path('authentication/', include('authentication.urls')),
     path('api/', include(router.urls))
-)
+]

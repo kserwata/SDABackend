@@ -1,5 +1,6 @@
 from django import template
 from fleet.models import PETROL_CHOISES
+from django.utils.translation import gettext as _
 
 register = template.Library()
 
@@ -7,9 +8,9 @@ register = template.Library()
 @register.filter(name="brand_new_car")
 def brand_new_car(value):
     if value > 2015:
-        return "Nowy pojazd"
+        return _("Nowy pojazd")
     else:
-        return "Stary pojazd"
+        return _("Stary pojazd")
 
 
 @register.filter(name="test")
