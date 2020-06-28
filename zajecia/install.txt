@@ -1,0 +1,10 @@
+1. instalujemy requirementsy i sprawdzamy czy działa django runserver
+2. konfiguracja gunicorna
+3. instalacja supervisorda (apt-get install supervisor)
+4. konfiguracja pliku konfiguracyjnego dla supervisorda
+5. instalacja w supervisor (cp zajecia_supervisor.conf /etc/supervisor/conf.d/)
+6. przełodowanie supervisorda (supervisordctl reread, supervisordctl update)
+7. wystarowanie gunicorna przez supervisorda (supervisordctl start zajecia)
+8. instalacja nginx'a (apt-get install nginx)
+9. instacja konfuracji w nginx (cp zajecia_nginx /etc/nginx/sites-available, ln -s /etc/nginx/sites-available/zajecia_nginx /etc/nginx/sites-enabled)
+10.przeładowanie nginxa (service nginx restart)
