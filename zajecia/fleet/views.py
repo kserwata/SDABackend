@@ -3,6 +3,8 @@ from django.shortcuts import render, HttpResponse
 from .forms import SimpleCarForm, ModelCarForm
 from .service import FleetService
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.translation import gettext
+from django.utils.translation import activate, get_language_info
 import json
 
 

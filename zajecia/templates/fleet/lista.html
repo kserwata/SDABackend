@@ -1,6 +1,7 @@
 {% extends "core/template.html" %}
 {% load fleet_tags %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} Lista pojazdów {% endblock %}
 
@@ -9,19 +10,19 @@
         <thead>
             <tr>
                 <th>
-                    Brand
+                    {% trans 'FLEET.brand' %}
                 </th>
                 <th>
-                    Model
+                    {% trans 'FLEET.model' %}
                 </th>
                 <th>
-                    Paliwo
+                    {% trans 'FLEET.petrol' %}
                 </th>
                 <th>
-                    Rok produkcji
+                    {% trans 'FLEET.year' %}
                 </th>
                 <th>
-                    Ilość drzwi
+                    {% trans 'FLEET.doors' %}
                 </th>
                 <th>
                     Odnośnik

@@ -6,10 +6,17 @@ from django.contrib.auth.decorators import permission_required
 import jwt
 import datetime
 import json
+from django.utils.translation import activate
 
 
 def index_page(request):
-    return HttpResponse("index")
+    return redirect("fleet_list")
+
+
+def language_changes(request):
+    language = request.GET['lang']
+    activate(language)
+    return redirect(index_page)
 
 
 def register_view(request):

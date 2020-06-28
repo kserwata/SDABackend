@@ -1,31 +1,38 @@
+{% load i18n %}
+
 <ul>
     <li>
-        <a href="{% url 'auth_index_view' %}">Strona główna</a>
+        <a href="{% url 'auth_index_view' %}">{% trans "APPLICATION.MENU.index" %}</a>
     </li>
     <li>
-        <a href="{% url 'fleet_list' %}">Lista pojazdów</a>
+        <a href="{% url 'fleet_list' %}">{% trans 'APPLICATION.MENU.fleetList' %}</a>
     </li>
     {% if request.user.is_authenticated %}
         <li>
-            Witaj {{ request.user.username }} ({{ request.user.employee.location }})!
+            {% trans 'APPLICATION.MENU.welcome' %} {{ request.user.username }} ({{ request.user.employee.location }})!
         </li>
         <li>
-            <a href="{% url 'auth_logout_view' %}">Wyloguj</a>
+            <a href="{% url 'auth_logout_view' %}">{% trans 'APPLICATION.MENU.logout' %}</a>
         </li>
         {% if request.user.is_superuser %}
             <li>
-                <a href="{% url 'auth_users_view' %}">Uzytkownicy</a>
+                <a href="{% url 'auth_users_view' %}">{% trans 'APPLICATION.MENU.users' %}</a>
             </li>
         {% endif %}
     {% else %}
         <li>
-            <a href="{% url 'auth_login_view' %}">Login</a>
+            <a href="{% url 'auth_login_view' %}">{% trans 'APPLICATION.MENU.login' %}</a>
         </li>
         <li>
-            <a href="{% url 'auth_register_view' %}">Rejestracja</a>
+            <a href="{% url 'auth_register_view' %}">{% trans 'APPLICATION.MENU.register' %}</a>
         </li>
     {% endif %}
     <li>
-        <a href="">Kontakt</a>
+        <a href="">{% trans 'APPLICATION.MENU.contact' %}</a>
     </li>
+    {% for language in request.LANGUAGES %}
+        <li>
+            <a href="/{{ language.0 }}">{{ language.1 }}</a>
+        </li>
+    {% endfor %}
 </ul>
