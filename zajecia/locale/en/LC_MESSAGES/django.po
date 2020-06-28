@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-28 09:55+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\core\menu.html:5
+msgid "APPLICATION.MENU.index"
+msgstr "strona glowna"
+
+#: .\templates\core\menu.html:8
+msgid "APPLICATION.MENU.fleetList"
+msgstr ""
+
+#: .\templates\core\menu.html:12
+msgid "APPLICATION.MENU.welcome"
+msgstr ""
+
+#: .\templates\core\menu.html:15
+msgid "APPLICATION.MENU.logout"
+msgstr ""
+
+#: .\templates\core\menu.html:19
+msgid "APPLICATION.MENU.users"
+msgstr ""
+
+#: .\templates\core\menu.html:24
+msgid "APPLICATION.MENU.login"
+msgstr ""
+
+#: .\templates\core\menu.html:27
+msgid "APPLICATION.MENU.register"
+msgstr ""
+
+#: .\templates\core\menu.html:31
+msgid "APPLICATION.MENU.contact"
+msgstr ""
+
+#: .\templates\fleet\lista.html:13
+msgid "FLEET.brand"
+msgstr ""
+
+#: .\templates\fleet\lista.html:16
+msgid "FLEET.model"
+msgstr ""
+
+#: .\templates\fleet\lista.html:19
+msgid "FLEET.petrol"
+msgstr ""
+
+#: .\templates\fleet\lista.html:22
+msgid "FLEET.year"
+msgstr ""
+
+#: .\templates\fleet\lista.html:25
+msgid "FLEET.doors"
+msgstr ""
+
+#: .\zajecia\settings.py:125
+msgid "Polski"
+msgstr ""
+
+#: .\zajecia\settings.py:126
+msgid "English"
+msgstr ""
